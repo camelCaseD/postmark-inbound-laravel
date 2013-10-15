@@ -95,9 +95,8 @@ class Parser {
 		if (preg_match('~<(.*?)>~', $input, $output) == 1)
 		{
 			return $output[1];
-		} else {
-			return $input;
 		}
+		return $input;
 	}
 
 	private function cc()
