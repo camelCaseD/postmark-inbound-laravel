@@ -109,6 +109,16 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function testBodyIsTextWithHtml()
+	{
+		$email = new Email(['body' => '<h1>PHPUnit Testing is awesome</h1>']);
+
+		$this->assertEquals(
+			$email->bodyIsText(),
+			false
+		);
+	}
+
 	public function testBodyIsHtml()
 	{
 		$email = new Email(['body' => '<h1>PHPUnit Testing is awesome</h1>']);
@@ -116,6 +126,16 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(
 			$email->bodyIsHtml(),
 			true
+		);
+	}
+
+	public function testBodyIsHtmlWithText()
+	{
+		$email = new Email(['body' => 'PHPUnit Testing is awesome']);
+
+		$this->assertEquals(
+			$email->bodyIsHtml(),
+			false
 		);
 	}
 }
