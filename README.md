@@ -29,6 +29,8 @@ Then anywhere within your app you can use the following:
 PostmarkEmail::from();
 PostmarkEmail::to();
 PostmarkEmail::body(); // Auto-detects if message contains html or text only.
+PostmarkEmail::bodyIsText();
+PostmarkEmail::bodyIsHtml();
 PostmarkEmail::subject();
 PostmarkEmail::replyTo();
 PostmarkEmail::cc(); // Returns array if more than one. Ex: array('someone@somewhere.com', 'hi@awesome.com'). Returns string if only one.

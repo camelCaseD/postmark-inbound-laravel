@@ -31,6 +31,26 @@ class Email {
 		}
 	}
 
+	public function bodyIsText()
+	{
+		if ($this->data['body'] == strip_tags($this->data['body']))
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	public function bodyIsHtml()
+	{
+		if ($this->data['body'] != strip_tags($this->data['body']))
+		{
+			return true;
+		}
+
+		return false;
+	}
+
 	public function attachments()
 	{
 		return $this->attachments;

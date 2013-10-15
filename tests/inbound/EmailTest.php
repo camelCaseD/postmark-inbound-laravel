@@ -98,4 +98,24 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 			[0 => $attachment, 1 => $attachment1]
 		);
 	}
+
+	public function testBodyIsText()
+	{
+		$email = new Email(['body' => 'PHPUnit Testing is awesome']);
+
+		$this->assertEquals(
+			$email->bodyIsText(),
+			true
+		);
+	}
+
+	public function testBodyIsHtml()
+	{
+		$email = new Email(['body' => '<h1>PHPUnit Testing is awesome</h1>']);
+
+		$this->assertEquals(
+			$email->bodyIsHtml(),
+			true
+		);
+	}
 }
