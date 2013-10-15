@@ -1,5 +1,6 @@
 Laravel Postmark Inbound Parser
 =============
+[![Build Status](https://travis-ci.org/camelCaseD/postmark-inbound-laravel.png)](https://travis-ci.org/camelCaseD/postmark-inbound-laravel)
 
 This is an Inbound Parser for Postmark meant to be used with Laravel.
 
