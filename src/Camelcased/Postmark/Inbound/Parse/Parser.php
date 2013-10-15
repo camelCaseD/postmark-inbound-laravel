@@ -38,9 +38,18 @@ class Parser {
 		$this->output['to'] = $this->inbound["To"];
 		$this->output['replyTo'] = $this->replyTo();
 		$this->output['from'] = $this->inbound["From"];
-		$this->output['cc'] = $this->cc();
 
-		if ($this->HasAttachments())
+		if ($this->has('Cc'))
+		{
+			$this->output['cc'] = $this->cc();
+		}
+
+		if ($this->has('Bcc'))
+		{
+			$this->output['bcc'] = $this->bcc();
+		}
+
+		if ($this->has('Attachments'))
 		{
 			$this->output['Attachments'] = array();
 			$i = 0;
@@ -71,15 +80,6 @@ class Parser {
 		return ($this->inbound["HtmlBody"])  != null || ($this->inbound["HtmlBody"])  != "" ? true : false;
 	}
 
-	private function HasAttachments()
-	{
-		if (array_key_exists('Attachments', $this->inbound)) {
-			return count($this->inbound["Attachments"]) > 0 ? true : false;
-		} else {
-			return false;
-		}
-	}
-
 	private function replyTo()
 	{
 		if (empty($this->inbound["ReplyTo"]) || $this->inbound["ReplyTo"] == '')
@@ -90,6 +90,12 @@ class Parser {
 		return $this->inbound["ReplyTo"];
 	}
 
+	private function extractEmail($input)
+	{
+		preg_match('~<(.*?)>~', $input, $output);
+		return $output[1];
+	}
+
 	private function cc()
 	{
 		$ccs = explode(',', $this->inbound['Cc']);
@@ -97,13 +103,35 @@ class Parser {
 		{
 			$final = array();
 			foreach ($ccs as $cc) {
-				preg_match('~<(.*?)>~', $cc, $output);
-				array_push($final, $output[1]);
+				array_push($final, $this->extractEmail($cc));
 			}
 			return $final;
 		} else {
-			preg_match('~<(.*?)>~', $this->inbound['Cc'], $output);
-			return $output[1];
+			return $this->extractEmail($this->inbound['Cc']);
+		}
+	}
+
+	private function bcc()
+	{
+		$bccs = explode(',', $this->inbound['Bcc']);
+		if ($bccs != array($this->inbound['Bcc']))
+		{
+			$final = array();
+			foreach ($bccs as $bcc) {
+				array_push($final, $this->extractEmail($bcc));
+			}
+			return $final;
+		} else {
+			return $this->extractEmail($this->inbound['Bcc']);
+		}
+	}
+
+	private function has($key)
+	{
+		if (array_key_exists($key, $this->inbound)) {
+			return count($this->inbound[$key]) > 0 ? true : false;
+		} else {
+			return false;
 		}
 	}
 }
