@@ -2,6 +2,13 @@
     "name": "camelcased/postmark-inbound-laravel",
     "description": "This is an Inbound Parser for Postmark meant to be used with Laravel.",
     "license": "MIT",
+    "keywords": [
+        "postmark",
+        "inbound",
+        "laravel",
+        "email",
+        "parser"
+    ],
     "authors": [
         {
             "name": "Brandon Borders",
