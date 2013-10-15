@@ -1,5 +1,5 @@
 {
-    "name": "camelcased/postmark",
+    "name": "camelcased/postmark-inbound-laravel",
     "description": "This is an Inbound Parser for Postmark meant to be used with Laravel.",
     "license": "MIT",
     "authors": [
