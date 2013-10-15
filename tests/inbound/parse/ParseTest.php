@@ -12,10 +12,17 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 			array()
 		);
 
-		$otherParser = new Parser(false);
+		$emptyParser = new Parser(false);
 
 		$this->assertEquals(
-			$otherParser->parse(),
+			$emptyParser->parse(),
+			array()
+		);
+
+		$invalidParser = new Parser('{"invalid""syntax"}');
+
+		$this->assertEquals(
+			$invalidParser->parse(),
 			array()
 		);
 	}
@@ -33,7 +40,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 			$output
 		);
 
-		$otherInput = array (
+		$arrayInput = array (
 		  'From' => 'myUser@theirDomain.com',
 		  'FromFull' => 
 		  array (
@@ -116,10 +123,10 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 		  ),
 		);
 
-		$otherParser = new Parser($otherInput);
+		$arrayParser = new Parser($arrayInput);
 
 		$this->assertEquals(
-			$otherParser->parse(),
+			$arrayParser->parse(),
 			$output
 		);
 	}
