@@ -209,6 +209,13 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 			$parser->parse(),
 			$output
 		);
+
+		$emailParser = new Parser(file_get_contents(__DIR__ . '/stubs/inbound_cc_just_email.json'));
+
+		$this->assertEquals(
+			$emailParser->parse(),
+			$output
+		);
 	}
 
 	public function testParserReturnsBccWithMoreThanOne()

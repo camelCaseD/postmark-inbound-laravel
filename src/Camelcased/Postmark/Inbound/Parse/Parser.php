@@ -92,8 +92,12 @@ class Parser {
 
 	private function extractEmail($input)
 	{
-		preg_match('~<(.*?)>~', $input, $output);
-		return $output[1];
+		if (preg_match('~<(.*?)>~', $input, $output) == 1)
+		{
+			return $output[1];
+		} else {
+			return $input;
+		}
 	}
 
 	private function cc()
