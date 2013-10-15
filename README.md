@@ -2,7 +2,6 @@ Laravel Postmark Inbound Parser
 =============
 
 This is an Inbound Parser for Postmark meant to be used with Laravel.
--------------
 
 How To Use
 =============
