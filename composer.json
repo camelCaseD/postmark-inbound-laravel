@@ -1,0 +1,25 @@
+{
+    "name": "camelcased/postmark",
+    "description": "This is an Inbound Parser for Postmark meant to be used with Laravel.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brandon Borders",
+            "email": "brandon@camelcased.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "require-dev": {
+        "mockery/mockery": "dev-master",
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Camelcased\\Postmark": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
