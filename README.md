@@ -7,10 +7,16 @@ How To Use
 =============
 
 Add the following service provider to app/config/app.php:
-    'Camelcased\Postmark\PostmarkServiceProvider',
+
+```
+'Camelcased\Postmark\PostmarkServiceProvider',
+```
 
 You can also add the following alias:
-    'PostmarkEmail'   => 'Camelcased\Postmark\PostmarkEmail',
+
+```
+'PostmarkEmail'   => 'Camelcased\Postmark\PostmarkEmail',
+```
 
 License
 =============
