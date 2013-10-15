@@ -20,10 +20,9 @@ class PostmarkServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$parser = new Parser($app["Input"]->get());
-
 		$this->app['postmarkEmail'] = $this->app->share(function($app)
 		{
+			$parser = new Parser($app["Input"]->get());
 			return new Email($parser->parse());
 		});
 	}
