@@ -11,13 +11,13 @@ Config
 -------------
 Add the following service provider to app/config/app.php:
 
-```
+```php
 'Camelcased\Postmark\PostmarkServiceProvider',
 ```
 
 You can also add the following alias:
 
-```
+```php
 'PostmarkEmail'   => 'Camelcased\Postmark\PostmarkEmail',
 ```
 
@@ -55,6 +55,7 @@ if (PostmarkEmail::hasAttachments())
   foreach ($attachments as $attachment) {
     $attachment->Name();
     $attachment->Content(); // Returns base64 encoded string
+    $attachment->decodedContent(); // Returns decoded value
     $attachment->Type(); // Or use $attachment->MIME()
   }
 }
