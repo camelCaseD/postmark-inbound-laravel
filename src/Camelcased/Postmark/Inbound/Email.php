@@ -7,7 +7,7 @@ class Email {
 
 	protected $attachments = array();
 
-	public function __construct($data)
+	public function __construct(array $data)
 	{
 		$this->data = $data;
 
@@ -26,9 +26,9 @@ class Email {
 	{
 		if (array_key_exists('Attachments', $this->data)) {
 			return count($this->data["Attachments"]) > 0 ? true : false;
-		} else {
-			return false;
-		}
+		} 
+
+		return false;
 	}
 
 	public function bodyIsText()

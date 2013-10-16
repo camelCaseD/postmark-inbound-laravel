@@ -3,7 +3,7 @@
 class Attachment {
 	protected $attachment;
 
-	public function __construct($attachment)
+	public function __construct(array $attachment)
 	{
 		$this->attachment = $attachment;
 	}

@@ -1,9 +1,9 @@
 <?php namespace Camelcased\Postmark\Inbound\Parse;
 
 class Parser {
-	private $inbound;
+	protected $inbound;
 
-	private $output = array();
+	protected $output;
 
 	public function __construct($json)
 	{
