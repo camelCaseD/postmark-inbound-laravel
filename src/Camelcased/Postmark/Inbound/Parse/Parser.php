@@ -41,12 +41,12 @@ class Parser {
 
 		if ($this->has('Cc'))
 		{
-			$this->output['cc'] = $this->cc();
+			$this->output['cc'] = $this->carbon('Cc');
 		}
 
 		if ($this->has('Bcc'))
 		{
-			$this->output['bcc'] = $this->bcc();
+			$this->output['bcc'] = $this->carbon('Bcc');
 		}
 
 		if ($this->has('Attachments'))
@@ -99,34 +99,22 @@ class Parser {
 		return $input;
 	}
 
-	private function cc()
+	private function carbon($field)
 	{
-		$ccs = explode(',', $this->inbound['Cc']);
-		if ($ccs != array($this->inbound['Cc']))
-		{
-			$final = array();
-			foreach ($ccs as $cc) {
-				array_push($final, $this->extractEmail($cc));
-			}
-			return $final;
-		} else {
-			return $this->extractEmail($this->inbound['Cc']);
-		}
-	}
+		$carbons = explode(',', $this->inbound[$field]);
 
-	private function bcc()
-	{
-		$bccs = explode(',', $this->inbound['Bcc']);
-		if ($bccs != array($this->inbound['Bcc']))
+		// Is there more than one
+		if ($carbons != array($this->inbound[$field]))
 		{
 			$final = array();
-			foreach ($bccs as $bcc) {
-				array_push($final, $this->extractEmail($bcc));
+			foreach ($carbons as $carbon) {
+				array_push($final, $this->extractEmail($carbon));
 			}
+
 			return $final;
-		} else {
-			return $this->extractEmail($this->inbound['Bcc']);
 		}
+
+		return $this->extractEmail($this->inbound[$field]);
 	}
 
 	private function has($key)
