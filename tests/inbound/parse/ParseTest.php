@@ -33,7 +33,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
 		$parser = new Parser($input);
 
-		$output = ['body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'cc' => ['sample.cc@emailDomain.com', 'another.cc@emailDomain.com']];
+		$output = array('body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'cc' => array('sample.cc@emailDomain.com', 'another.cc@emailDomain.com'));
 
 		$this->assertEquals(
 			$parser->parse(),
@@ -137,7 +137,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(
 			$parser->parse(),
-			['body' => 'Hello', 'subject' => 'Test', 'to' => 'uhh', 'replyTo' => 'me', 'from' => 'ugh', 'cc' => 'sample.cc@emailDomain.com']
+			array('body' => 'Hello', 'subject' => 'Test', 'to' => 'uhh', 'replyTo' => 'me', 'from' => 'ugh', 'cc' => 'sample.cc@emailDomain.com')
 		);
 	}
 
@@ -147,7 +147,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
 		$parser = new Parser($input);
 
-		$output = ['body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'cc' => ['sample.cc@emailDomain.com', 'another.cc@emailDomain.com'], 'Attachments' => [0 => ['Name' => 'Hello.txt', 'Content' => 'SGVsbG8gV29ybGQh', 'MIME' => 'text/plain']]];
+		$output = array('body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'cc' => array('sample.cc@emailDomain.com', 'another.cc@emailDomain.com'), 'Attachments' => array(0 => array('Name' => 'Hello.txt', 'Content' => 'SGVsbG8gV29ybGQh', 'MIME' => 'text/plain')));
 
 		$this->assertEquals(
 			$parser->parse(),
@@ -161,7 +161,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
 		$parser = new Parser($input);
 
-		$output = ['body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'cc' => ['sample.cc@emailDomain.com', 'another.cc@emailDomain.com'], 'Attachments' => [0 => ['Name' => 'Hello.txt', 'Content' => 'SGVsbG8gV29ybGQh', 'MIME' => 'text/plain'], 1 => ['Name' => 'Bye.txt', 'Content' => 'QnllIFdvcmxk', 'MIME' => 'text/plain']]];
+		$output = array('body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'cc' => array('sample.cc@emailDomain.com', 'another.cc@emailDomain.com'), 'Attachments' => array(0 => array('Name' => 'Hello.txt', 'Content' => 'SGVsbG8gV29ybGQh', 'MIME' => 'text/plain'), 1 => array('Name' => 'Bye.txt', 'Content' => 'QnllIFdvcmxk', 'MIME' => 'text/plain')));
 
 		$this->assertEquals(
 			$parser->parse(),
@@ -175,7 +175,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
 		$parser = new Parser($input);
 
-		$output = ['body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUser@theirDomain.com', 'cc' => ['sample.cc@emailDomain.com', 'another.cc@emailDomain.com']];
+		$output = array('body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUser@theirDomain.com', 'cc' => array('sample.cc@emailDomain.com', 'another.cc@emailDomain.com'));
 
 		$this->assertEquals(
 			$parser->parse(),
@@ -189,7 +189,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
 		$parser = new Parser($input);
 
-		$output = ['body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'cc' =>['sample.cc@emailDomain.com', 'another.cc@emailDomain.com']];
+		$output = array('body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'cc' => array('sample.cc@emailDomain.com', 'another.cc@emailDomain.com'));
 
 		$this->assertEquals(
 			$parser->parse(),
@@ -203,7 +203,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
 		$parser = new Parser($input);
 
-		$output = ['body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'cc' => 'sample.cc@emailDomain.com'];
+		$output = array('body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'cc' => 'sample.cc@emailDomain.com');
 
 		$this->assertEquals(
 			$parser->parse(),
@@ -224,7 +224,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
 		$parser = new Parser($input);
 
-		$output = ['body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'bcc' => ['sample.cc@emailDomain.com', 'another.cc@emailDomain.com']];
+		$output = array('body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'bcc' => array('sample.cc@emailDomain.com', 'another.cc@emailDomain.com'));
 
 		$this->assertEquals(
 			$parser->parse(),
@@ -238,7 +238,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
 		$parser = new Parser($input);
 
-		$output = ['body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'bcc' => 'sample.cc@emailDomain.com'];
+		$output = array('body' => '<h1>Hello</h1>', 'subject' => 'This is an inbound message', 'to' => '451d9b70cf9364d23ff6f9d51d870251569e+ahoy@inbound.postmarkapp.com', 'from' => 'myUser@theirDomain.com', 'replyTo' => 'myUsersReplyAddress@theirDomain.com', 'bcc' => 'sample.cc@emailDomain.com');
 
 		$this->assertEquals(
 			$parser->parse(),

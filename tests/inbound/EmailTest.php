@@ -6,7 +6,7 @@ use Camelcased\Postmark\Inbound\Attachment as Attachment;
 class EmailTest extends PHPUnit_Framework_TestCase {
 	public function testGetToField()
 	{
-		$email = new Email(['to' => 'me@camelcased.com']);
+		$email = new Email(array('to' => 'me@camelcased.com'));
 
 		$this->assertEquals(
 			$email->to(),
@@ -16,7 +16,7 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 
 	public function testGetFromField()
 	{
-		$email = new Email(['from' => 'you@camelcased.com']);
+		$email = new Email(array('from' => 'you@camelcased.com'));
 
 		$this->assertEquals(
 			$email->from(),
@@ -26,7 +26,7 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 
 	public function testGetReplyToField()
 	{
-		$email = new Email(['replyTo' => 'you@camelcased.com']);
+		$email = new Email(array('replyTo' => 'you@camelcased.com'));
 
 		$this->assertEquals(
 			$email->replyTo(),
@@ -36,7 +36,7 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 
 	public function testGetSubjectField()
 	{
-		$email = new Email(['subject' => 'PHPUnit Test']);
+		$email = new Email(array('subject' => 'PHPUnit Test'));
 
 		$this->assertEquals(
 			$email->subject(),
@@ -46,7 +46,7 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 
 	public function testGetBodyFieldNoHTML()
 	{
-		$email = new Email(['body' => 'PHPUnit Testing is awesome']);
+		$email = new Email(array('body' => 'PHPUnit Testing is awesome'));
 
 		$this->assertEquals(
 			$email->body(),
@@ -56,7 +56,7 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 
 	public function testGetBodyFieldWithHTML()
 	{
-		$email = new Email(['body' => '<h1>PHPUnit Testing is awesome</h1>']);
+		$email = new Email(array('body' => '<h1>PHPUnit Testing is awesome</h1>'));
 
 		$this->assertEquals(
 			$email->body(),
@@ -66,7 +66,7 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 
 	public function testCheckForAttachments()
 	{
-		$email = new Email(['Attachments' => [0 => ['Name' => 'Hello.txt', 'Content' => 'someBase64EncodedContent', 'MIME' => 'text/plain']]]);
+		$email = new Email(array('Attachments' => array(0 => array('Name' => 'Hello.txt', 'Content' => 'someBase64EncodedContent', 'MIME' => 'text/plain'))));
 
 		$this->assertEquals(
 			$email->hasAttachments(),
@@ -76,32 +76,32 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 
 	public function testGetAttachmentsFieldOneAttachment()
 	{
-		$email = new Email(['Attachments' => [0 => ['Name' => 'Hello.txt', 'Content' => 'someBase64EncodedContent', 'MIME' => 'text/plain']]]);
+		$email = new Email(array('Attachments' => array(0 => array('Name' => 'Hello.txt', 'Content' => 'someBase64EncodedContent', 'MIME' => 'text/plain'))));
 
-		$attachment = new Attachment(['Name' => 'Hello.txt', 'Content' => 'someBase64EncodedContent', 'MIME' => 'text/plain']);
+		$attachment = new Attachment(array('Name' => 'Hello.txt', 'Content' => 'someBase64EncodedContent', 'MIME' => 'text/plain'));
 
 		$this->assertEquals(
 			$email->attachments(),
-			[0 => $attachment]
+			array(0 => $attachment)
 		);
 	}
 
 	public function testGetAttachmentsFieldMultipleAttachments()
 	{
-		$email = new Email(['Attachments' => [0 => ['Name' => 'Hello.txt', 'Content' => 'someBase64EncodedContent', 'MIME' => 'text/plain'], 1 => ['Name' => 'Bye.txt', 'Content' => 'someBase64EncodedContentAgain', 'MIME' => 'text/plain']]]);
+		$email = new Email(array('Attachments' => array(0 => array('Name' => 'Hello.txt', 'Content' => 'someBase64EncodedContent', 'MIME' => 'text/plain'), 1 => array('Name' => 'Bye.txt', 'Content' => 'someBase64EncodedContentAgain', 'MIME' => 'text/plain'))));
 
-		$attachment = new Attachment(['Name' => 'Hello.txt', 'Content' => 'someBase64EncodedContent', 'MIME' => 'text/plain']);
-		$attachment1 = new Attachment(['Name' => 'Bye.txt', 'Content' => 'someBase64EncodedContentAgain', 'MIME' => 'text/plain']);
+		$attachment = new Attachment(array('Name' => 'Hello.txt', 'Content' => 'someBase64EncodedContent', 'MIME' => 'text/plain'));
+		$attachment1 = new Attachment(array('Name' => 'Bye.txt', 'Content' => 'someBase64EncodedContentAgain', 'MIME' => 'text/plain'));
 
 		$this->assertEquals(
 			$email->attachments(),
-			[0 => $attachment, 1 => $attachment1]
+			array(0 => $attachment, 1 => $attachment1)
 		);
 	}
 
 	public function testBodyIsText()
 	{
-		$email = new Email(['body' => 'PHPUnit Testing is awesome']);
+		$email = new Email(array('body' => 'PHPUnit Testing is awesome'));
 
 		$this->assertEquals(
 			$email->bodyIsText(),
@@ -111,7 +111,7 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 
 	public function testBodyIsTextWithHtml()
 	{
-		$email = new Email(['body' => '<h1>PHPUnit Testing is awesome</h1>']);
+		$email = new Email(array('body' => '<h1>PHPUnit Testing is awesome</h1>'));
 
 		$this->assertEquals(
 			$email->bodyIsText(),
@@ -121,7 +121,7 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 
 	public function testBodyIsHtml()
 	{
-		$email = new Email(['body' => '<h1>PHPUnit Testing is awesome</h1>']);
+		$email = new Email(array('body' => '<h1>PHPUnit Testing is awesome</h1>'));
 
 		$this->assertEquals(
 			$email->bodyIsHtml(),
@@ -131,7 +131,7 @@ class EmailTest extends PHPUnit_Framework_TestCase {
 
 	public function testBodyIsHtmlWithText()
 	{
-		$email = new Email(['body' => 'PHPUnit Testing is awesome']);
+		$email = new Email(array('body' => 'PHPUnit Testing is awesome'));
 
 		$this->assertEquals(
 			$email->bodyIsHtml(),

@@ -5,7 +5,7 @@ use Camelcased\Postmark\Inbound\Attachment as Attachment;
 class AttachmentTest extends PHPUnit_Framework_TestCase {
 	public function testGetNameField()
 	{
-		$attachment = new Attachment(['Name' => 'Hello.txt']);
+		$attachment = new Attachment(array('Name' => 'Hello.txt'));
 
 		$this->assertEquals(
 			$attachment->Name(),
@@ -15,7 +15,7 @@ class AttachmentTest extends PHPUnit_Framework_TestCase {
 
 	public function testGetContentField()
 	{
-		$base64 = new Attachment(['Content' => 'aGVsbG8=']);
+		$base64 = new Attachment(array('Content' => 'aGVsbG8='));
 
 		$this->assertEquals(
 			$base64->Content(),
@@ -30,7 +30,7 @@ class AttachmentTest extends PHPUnit_Framework_TestCase {
 
 	public function testGetMIMEField()
 	{
-		$attachment = new Attachment(['MIME' => 'text/plain']);
+		$attachment = new Attachment(array('MIME' => 'text/plain'));
 
 		$this->assertEquals(
 			$attachment->MIME(),
