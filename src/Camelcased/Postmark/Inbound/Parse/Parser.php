@@ -99,6 +99,9 @@ class Parser {
 		return $input;
 	}
 
+	/**
+	 * @param string $field
+	 */
 	private function carbon($field)
 	{
 		$carbons = explode(',', $this->inbound[$field]);
@@ -117,6 +120,9 @@ class Parser {
 		return $this->extractEmail($this->inbound[$field]);
 	}
 
+	/**
+	 * @param string $key
+	 */
 	private function has($key)
 	{
 		if (array_key_exists($key, $this->inbound)) {
