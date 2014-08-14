@@ -22,8 +22,8 @@ class PostmarkServiceProvider extends ServiceProvider {
 	{
 		$this->app['postmarkEmail'] = $this->app->share(function($app)
 		{
-			$parser = new Parser($app["Input"]->get());
-			return new Email($parser->parse());
+			$parser = new Parser($app["Input"]->get()); // Create an instance of the parser with the given input
+			return new Email($parser->parse()); // Returns an instance of the given email as an Email object
 		});
 	}
 
