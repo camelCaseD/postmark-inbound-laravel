@@ -1,6 +1,6 @@
 Laravel Postmark Inbound Parser
 =============
-[![Build Status](https://travis-ci.org/camelCaseD/postmark-inbound-laravel.png)](https://travis-ci.org/camelCaseD/postmark-inbound-laravel) [![Coverage Status](https://coveralls.io/repos/camelCaseD/postmark-inbound-laravel/badge.png?branch=master)](https://coveralls.io/r/camelCaseD/postmark-inbound-laravel?branch=master)
+[![Build Status](https://travis-ci.org/camelCaseD/postmark-inbound-laravel.png)](https://travis-ci.org/camelCaseD/postmark-inbound-laravel) [![Coverage Status](https://coveralls.io/repos/camelCaseD/postmark-inbound-laravel/badge.png?branch=master)](https://coveralls.io/r/camelCaseD/postmark-inbound-laravel?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/camelCaseD/postmark-inbound-laravel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/camelCaseD/postmark-inbound-laravel/?branch=master)
 
 This is an Inbound Parser for Postmark meant to be used with Laravel.
 
