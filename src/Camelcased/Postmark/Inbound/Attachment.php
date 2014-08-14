@@ -34,7 +34,7 @@ class Attachment {
 	/**
 	 * Returns the content of the attachment in all of it's raw glory
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 	public function DecodedContent()
 	{
