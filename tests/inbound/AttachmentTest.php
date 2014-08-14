@@ -23,7 +23,7 @@ class AttachmentTest extends PHPUnit_Framework_TestCase {
 		);
 
 		$this->assertEquals(
-			$base64->decodedContent(),
+			$base64->DecodedContent(),
 			'hello'
 		);
 	}
