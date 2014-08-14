@@ -18,7 +18,7 @@ class Parser {
 		if (empty($json))
 		{
 			// Well we weren't given anything to parse
-			$this->inbound = null;
+			$this->inbound = array();
 		} else {
 			// Check to see if the given JSON is already an array
 			if (is_array($json))
@@ -38,7 +38,7 @@ class Parser {
 	 */
 	public function parse()
 	{
-		if ($this->inbound == null)
+		if ($this->inbound == array())
 		{
 			// Well that was short lived.
 			return array();
@@ -92,7 +92,7 @@ class Parser {
 	 * Converts the given JSON string to an array
 	 *
 	 * @param string $json
-	 * @return mixed
+	 * @return array
 	 */
 	private function jsonToArray($json)
 	{
@@ -103,7 +103,7 @@ class Parser {
 			return $source;
 		}
 
-		return null;
+		return array();
 	}
 
 	/**
