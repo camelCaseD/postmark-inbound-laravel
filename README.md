@@ -9,7 +9,7 @@ How To Use
 
 Config
 -------------
-Add the following service provider to app/config/app.php:
+Add the following service provider to `app/config/app.php`:
 
 ```php
 'Camelcased\Postmark\PostmarkServiceProvider',
