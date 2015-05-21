@@ -33,7 +33,7 @@ PostmarkEmail::bodyIsText();
 PostmarkEmail::bodyIsHtml();
 PostmarkEmail::subject();
 PostmarkEmail::replyTo();
-PostmarkEmail::cc(); // Returns array if more than one. Ex: array('someone@somewhere.com', 'hi@awesome.com'). Returns string if only one.
+PostmarkEmail::cc(); // Returns array if more than one. Ex: ['someone@somewhere.com', 'hi@awesome.com']. Returns string if only one.
 PostamrkEmail::bcc(); // Returns same as cc;
 ```
 
