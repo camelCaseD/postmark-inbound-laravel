@@ -18,7 +18,7 @@ class Parser {
 		if (empty($json))
 		{
 			// Well we weren't given anything to parse
-			$this->inbound = array();
+			$this->inbound = [];
 		} else {
 			// Check to see if the given JSON is already an array
 			if (is_array($json))
@@ -38,10 +38,10 @@ class Parser {
 	 */
 	public function parse()
 	{
-		if ($this->inbound == array())
+		if ($this->inbound == [])
 		{
 			// Well that was short lived.
-			return array();
+			return [];
 		}
 
 		// Set the Body field based on whether it is HTMl or good old fashioned plain text
@@ -73,13 +73,13 @@ class Parser {
 		// Does the email have any attachments
 		if ($this->has('Attachments'))
 		{
-			$this->output['Attachments'] = array();
+			$this->output['Attachments'] = [];
 			$i = 0;
 
 			// Loop through each of the attachments and convert it to an array for later use
 			foreach($this->inbound["Attachments"] as $attachment)
 			{
-				$this->output['Attachments'][$i] = array("Name" => $attachment["Name"], "Content" => $attachment["Content"], "MIME" => $attachment["ContentType"]);
+				$this->output['Attachments'][$i] = ["Name" => $attachment["Name"], "Content" => $attachment["Content"], "MIME" => $attachment["ContentType"]];
 				$i++;
 			}
 		}
@@ -103,7 +103,7 @@ class Parser {
 			return $source;
 		}
 
-		return array();
+		return [];
 	}
 
 	/**
@@ -159,9 +159,9 @@ class Parser {
 		$carbons = explode(',', $this->inbound[$field]);
 
 		// Is there more than one email in the given carbon field
-		if ($carbons != array($this->inbound[$field]))
+		if ($carbons != [$this->inbound[$field]])
 		{
-			$final = array();
+			$final = [];
 			foreach ($carbons as $carbon) {
 				array_push($final, $this->extractEmail($carbon));
 			}

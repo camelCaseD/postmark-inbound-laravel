@@ -11,7 +11,7 @@ class Email {
 	/**
 	 * @var array
 	 */
-	protected $attachments = array();
+	protected $attachments = [];
 
 	public function __construct(array $data)
 	{
